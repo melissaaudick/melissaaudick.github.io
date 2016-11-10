@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/notes/notes.js"></script>
+    <title>A Well of HTML</title>
+    <style type="text/css">
+    .example-form {
+        margin: 0 auto;
+        width: 400px;
+        padding: 5em;
+        border: 5px solid #CCC;
+        border-radius: 1em;
+    }
+    
+    table {
+        margin: 20px;
+    }
+    
+    table,
+    th,
+    td {
+        padding: 4px;
+        border: 1px solid black;
+    }
+    
+    .orderly {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        margin: 50px;
+        padding: 10px;
+    }
+    
+    .test-grid {
+        margin: 10px;
+    }
+    
+    .grid-img {
+        margin: 4px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <!-- ALL YOUR MARKUP GOES BELOW HERE -->
+        
+        
+        
+<a href="https://en.wikipedia.org/wiki/June_and_Jennifer_Gibbons">The last Wikipedia page I read (I couldn't think of a favorite)</a>
+
+<img src="img/cherries.jpg" />
+
+<h1>watch</h1>
+<h2>this</h2>
+<h3>text</h3>
+<h4>slowly</h4>
+<h5>sloooooowly</h5>
+<h6>disa<small>ppear</small></h6>
+
+<p>When the twins turned 14, a succession of therapists tried unsuccessfully to get them to communicate with others. They were sent to separate boarding schools in an attempt to break their isolation, but the pair became catatonic and entirely withdrawn
+    when parted.</p>
+<p>When they were reunited, the two spent <i>several years</i> isolating themselves in their bedroom, engaged in elaborate plays with dolls. They created many plays and stories in a sort of soap opera style, reading some of them aloud on tape as gifts for
+    their sister. Inspired by a pair of gift diaries at Christmas 1979, they began their writing careers. They sent away for a mail order course in creative writing, and each wrote several novels. </p>
+<p>Set primarily in the United States and particularly in <b>Malibu, California</b>, the stories involve young men and women who exhibit strange and often criminal behaviour</p>
+
+
+<ul>
+    <li>Ingredients</li>
+    <li>garlic</li>
+    <li>fresh rosemary</li>
+    <li>kale</li>
+    <li>chicken leg/thigh quarters with skin on</li>
+    <li>smoked paprika</li>
+    <li>white cooking wine</li>
+    <li>large onion</li>
+</ul>
+
+<ol>
+    <li>Dust the chicken with paprika and brown both sides</li>
+    <li>Cut the onion into slices, chop the garlic and cook until browned</li>
+    <li>Cover chicken and onion with cooking wine, add fresh rosemary, bring to a boil then simmer for about 45 minutes</li>
+    <li>Add the kale a handful at a time until it wilts</li>
+    <li>Serve with crusty bread or your favorite carb-y side</li>
+</ol>
+
+<form class="example-form">
+    <div>
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" />
+    </div>
+    <div>
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" />
+    </div>
+    <div>
+        <label for="favorite-part">How'm I doing?</label>
+        <textarea id="favorite-part"></textarea>
+    </div>
+    <div class="button">
+        <button type="submit">Press the button</button>
+    </div>
+</form>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Cat Name</th>
+            <th>Markings</th>
+        </tr>
+        <tr>
+            <td>Selina</td>
+            <td>Orange and black patchwork</td>
+        </tr>
+        <tr>
+            <td>Maddy</td>
+            <td>Pastel tiger</td>
+        </tr>
+        <tr>
+            <td colspan="2">(I may have mixed the above cats up)</td>
+        </tr>
+        <tr>
+            <td>Schroey</td>
+            <td>Elegant furry tuxedo</td>
+        </tr>
+        <tr>
+            <td>Cookiebun</td>
+            <td>Grey and white splotches</td>
+        </tr>
+    </thead>
+</table>
+    
+<div class="orderly">
+    <div>I made a div</div>
+    <div><img src="https://s-media-cache-ak0.pinimg.com/originals/11/ce/3e/11ce3e70b1124d9db0291298798562c4.jpg" width="50%"/></div>
+    <div><a href="https://www.youtube.com/watch?v=l7op92W7voE">check this out</a></div>
+    <div>
+        <table>
+            <tr>
+                <td colspan=11><b>World Series, Game 6</b></td>
+            </tr>
+            <tr>
+                <td>Inning</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>final</td>
+            </tr>
+            <tr>
+                <td>Cubs</td>
+                <td>3</td>
+                <td>0</td>
+                <td>4</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>2</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>Indians</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>1</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>1</td>
+                <td>3</td>
+            </tr>
+        </table>
+        
+    </div>
+    
+    <div>
+        <ul>
+            <li>a list of things</li>
+            <li>lentils</li>
+            <li>wallpaper</li>
+            <li>glue</li>
+        </ul>
+        
+    </div>
+    </div>
+
+
+<div class="test-grid">
+    <div class="row">
+        <div class="col-md-3"> <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRqy3Wqiyl46MImcxJv7C35y0efJNnsZrCzdEQ9yKCJ2rA6q4BE" class="grid-img"/> </div>
+        <div class="col-md-5"> this is the last part of this assigment that i have to do</div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"> <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQgIkDjx75pVrzbmeUPyJ8EnFJatblgfOKFFmQt-ZdT_d_IBguD" class="grid-img"/></div>
+        <div class="col-md-5"> i would have liked to put more thought into it</div>
+    </div> 
+    <div class="row">
+        <div class="col-md-3"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiOkJDvGGvHhtOscbujBjym07Nq_83_d9XibqYOiQFHZFrucle" class="grid-img"/> </div>
+        <div class="col-md-5"> but i need to do more work on that jquery assignment </div>
+    </div>
+</div>
+        <!-- ALL YOUR MARKUP GOES ABOVE HERE -->
+    </div>
+    <script>
+        $(function () {
+            window.opspark.notes.show();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+body {
+    padding: 10px;
+    font-family: Lucida Sans Unicode;
+    font-size: 12px;
+    z-index: -1; 
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.search {
+    border-radius: 25px;
+    height: 95px;
+    background-color: rgb(150, 150, 150); 
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 5px;
+    display: flex;
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: middle;
+    flex-direction: row;
+    justify: center;
+    width: 99%;
+}
+.resulttxt {
+    padding-top: 15px;
+    font-size: 13px;
+}
+
+.product {
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: rgb(150, 150, 150);
+    background-color: rgb(230, 230, 230);
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    display: flex;
+    vertical-align: top;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px;
+    padding: 10px;
+    width: 30%;
+    height: 45%;
+    font-size: 14px;
+    display: inline-block;
+    position: relative;
+}
+
+
+.product-expand {
+    border: 2px solid;
+    border-radius: 25px;
+    border-color: rgb(150, 150, 150);
+    background-color: white;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    margin: auto; 
+    padding: 10px;
+    max-width: 68%;
+    max-height: 87%;
+    position: fixed;
+    z-index: 98 !important;
+}
+.product-expand-header {
+    width: 60%;
+    padding-left: 5px;
+    padding-top: 12px;
+    float: right;
+    font-size: 15px;
+    font-weight: bold;
+}
+.product-expand-text {
+    width: 60%;
+    padding-left: 5px;
+    padding-top: 5px;
+    float: right;
+    font-size: 13px;
+}
+.zoom-caption {
+    font-size: 10px;
+    position: relative;
+    padding-top: 20px;
+    text-align: center;
+    bottom: 0;
+    margin: 0 auto; 
+}
+.img-expand {
+    max-height: 400px;
+    max-width: 280px;
+    display: block;
+}
+.div-expand {
+    padding-left: 8%;
+    padding-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    float: left;
+}
+.contract-button {
+    width: 100%;
+    background-color: white;
+    padding-left: 5px;
+    padding-top: 25px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 0px;
+}
+
+.product-zoom {
+    padding-top: 0px;
+    border: 2px solid;
+    border-radius: 10px;
+    border-color: rgb(190, 190, 190);
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    position: fixed;
+    z-index: 99 !important;
+}
+
+.product-head {
+    border-radius: 10px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    position: relative;
+}
+.thumbnail {
+    width: 50%;
+    border-radius: 10px;
+    background-color: white;
+    float: left;
+    position: relative;
+}
+.product-price {
+    width: 50%;
+    padding-left: 10px;
+    float: right;
+    font-size: 14px;
+    font-weight: bold;
+}
+.product-text {
+    width: 50%;
+    padding-left: 10px;
+    float: right;
+    font-size: 12px;
+}
+.product-button {
+    width: 90%;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 5px;
+    float: center;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 35px;
+    background-color: white;
+}
+
+.search-button {
+    width: 100px;
+    height: 30px;
+    padding-left: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 5px;
+    float: center;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 25px;
+    background-color: white;
+}
