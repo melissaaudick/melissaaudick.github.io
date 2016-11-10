@@ -20,59 +20,68 @@ $(function() {
 
     _.each(product, function(value, key, object) {
       searchable2 = [];
-      searchable2.push(value.id + value.type, value.color.concat(value.specs.join(' '), value.availableColors.join(' '), value.desc), value.price);
+      searchable2.push(value.id + value.type, value.color.concat(value.specs.join(' '), value.availableColors.join(' '), value.desc).toLowerCase(), value.price);
       searchable.push(searchable2);
 
     });
     //here we create an array of arrays, which pairs our ids with related searchable fields
-    //idk why i didn;t just use an object
+    //idk why i didn't just use an object
 
     $('#container').append($('<div>').attr('id', 'search').attr('class', 'search')
-
 
       .append($('<form>').attr('id', 'searchform')
         .append($('<input>').attr('type', 'text').attr('id', 'searchterm'))
         .append($('<button>').text('Search!').attr('class', 'search-button').attr('id', 'submit')))
 
 
-      ////hey plug the type sort and price sort stuff in over here!!! float right
+      ////here comes the code for the sort by type/price
 
-
-
-      .append($('<div>').attr('id', 'sortform').css('float', 'right')
-        .append($('<form>').attr('id', 'searchtype')
-          .append($('<input>').attr('type', 'radio').attr('id', 'showcases').click(function() {
+      .append($('<span>').attr('id', 'sortform').css('float', 'left')
+        .append($('<form>')
+          .append($('<input>').attr('type', 'radio').attr('name', 'sort').attr('id', 'showcases').click(function() {
             if (showcases.checked) {
-              showphones.checked = false;
+              _.each(caseFilter, function(element, index, collection) {
+                $("#" + element[0]).show()});
               _.each(phoneFilter, function(element, index, collection) {
                 $("#" + element[0]).toggle();
               });
             }
           }))
-          .append($('<div>').text('Show only cases'))
+          .append($('<span>').text('Show only cases'))
 
-          .append($('<input>').attr('type', 'radio').attr('id', 'showphones').click(function() {
+          .append($('<input>').attr('type', 'radio').attr('name', 'sort').attr('id', 'showphones').click(function() {
             if (showphones.checked) {
-              showcases.checked = false;
+             _.each(phoneFilter, function(element, index, collection) {
+                $("#" + element[0]).show()});
               _.each(caseFilter, function(element, index, collection) {
                 $("#" + element[0]).toggle();
               });
             }
           }))
-          .append($('<div>').text('Show only phones'))
-          //fix these buttons so one unchecks the other
+          .append($('<span>').text('Show only phones'))
 
 
-          //sort by price
-          .append($('<div>').attr('id', 'sortform').css('float', 'right'))
-          .append($('<input>').attr('type', 'checkbox').attr('id', 'sorthigh').click(function() {
-            _.each(priceTest, function(element, index, collection) {
+          //sort by price high
+          .append($('<span>').attr('id', 'sortform').css('float', 'right'))
+          .append($('<button>').text('Prices high to low').click(function() {
+            event.preventDefault();
+            _.each(priceTestHi, function(element, index, collection) {
 
-            $("#" + element).insertBefore($('.footer'));
-              
+              $("#" + element).insertBefore($('.footer'));
+
             });
           }))
 
+          //sort by price loooooowww
+          .append($('<span>').attr('id', 'sortform').css('float', 'right'))
+          .append($('<button>').text('Prices low to high').click(function() {
+            event.preventDefault();
+            _.each(priceTestLo, function(element, index, collection) {
+
+              $("#" + element).insertBefore($('.footer'));
+
+            });
+          }))
 
           .append($('<button>').text('Clear').attr('class', 'search-button').click(function() {
             location.reload();
@@ -84,9 +93,6 @@ $(function() {
     //diappearing/reappearing search results div 
     .append($('<div>').attr('id', 'searchresultdiv').attr('class', 'resulttxt').css("visibility", "hidden"))
 
-    //empty div below search results 
-
-    
 
     //empty div to mark the bottom of the page
     .append($('<div>').attr('id', 'footer').attr('class', 'footer').css("visibility", "hidden"));
@@ -103,26 +109,41 @@ $(function() {
     });
 
 
-    //stuff for sort by price
+    //vars for sort by price
     var priceList = {};
-    var priceTest = [];
+    var priceTestHi = [];
+    var priceTestLo = [];
 
-    //this creates an object that contains only prices and product ids
-    _.each(searchable, function(element, index, collection) {
-
-      priceList[element[2]] = element[0];
-
+    //here comes sort by price
+    //this creates priceList,  an object that contains only prices and product ids
+    _.map(searchable, function(element, index, collection) {
+      priceList[element[0]] = element[2];
     });
 
-    //this sorts the prices from low to high, sending the sorted list if ids into a new array
-    Object.keys(priceList).sort(function(a, b) {
-      return b - a;
-    })
-    .forEach(function(key) {
-      priceTest.push(priceList[key]);
-    });
-    // console.log(priceList);
-    console.log(priceTest);
+    function sortProperties(obj) {
+      // here we convert our priceList object into an array
+      var sortable = [];
+      for (var key in obj)
+        if (obj.hasOwnProperty(key))
+          sortable.push([key, obj[key]]); // in which each item is an array in format [key, value]
+
+        // sort items by value
+      sortable.sort(function(a, b) {
+        return b[1] - a[1]; // we then compare the prices, arranging from high to low
+      });
+      
+      _.each(sortable, function(element, index, collection) {
+        priceTestHi.push(element[0]); //then we push the associated product id into an array which'll be used to reorder our divs
+      });
+      sortable.sort(function(a, b) {
+        return a[1] - b[1]; // comparing prices from low to high
+      });
+     
+      _.each(sortable, function(element, index, collection) {
+        priceTestLo.push(element[0]); //and then pushing the associated product id into an array which'll be used to reorder our divs
+      });
+    }
+    sortProperties(priceList);
 
 
     ///this works now!!!! it's where search results come from
@@ -134,7 +155,7 @@ $(function() {
       event.preventDefault();
       _.each(searchable, function(element, index, collection) {
 
-        if ((element[1]).indexOf(searchterm.value) === -1) {
+        if ((element[1]).indexOf((searchterm.value).toLowerCase()) === -1) {
 
           searchresult.push(element[0]);
         }
@@ -157,8 +178,8 @@ $(function() {
     /*ok this is our productmaking function below
     pls note that because two of the products have the same id number it's necessary to distinguish them
     by id+type fields*/
-    
-    
+
+
     ///oi you need to put this in a div that'll be hidden when you sort by price
 
     _.each(product, function(value, key, object) {
