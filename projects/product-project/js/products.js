@@ -161,11 +161,12 @@ $(function() {
         }
 
         //toggle result div, set searchterm display var to searchterm.value
-        if (searchterm.length > 0) {
-        $('#searchresultdiv').text('Displaying search results for "' + searchterm.value + '"').css("visibility", "visible");
+       
+        if (searchresult.length === 11) {
+         $('#searchresultdiv').text('Sorry, no results found for "' + searchterm.value + '"').css("visibility", "visible");  
         }
         else {
-         $('#searchresultdiv').text('Sorry, no results found for "' + searchterm.value + '"').css("visibility", "visible");  
+        $('#searchresultdiv').text('Displaying search results for "' + searchterm.value + '"').css("visibility", "visible");
         }
       });
       ///so that up there is pushing div ids for UNsuccessful search results into a new array
