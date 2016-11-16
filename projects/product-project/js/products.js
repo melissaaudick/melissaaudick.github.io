@@ -7,8 +7,8 @@ $(function() {
 
 
 
-    const thumbs = "https://melissaaudick-github-io-melissaaudick.c9users.io/projects/product-project/img/product/thumbs/";
-    const pic = "https://melissaaudick-github-io-melissaaudick.c9users.io/projects/product-project/img/product/";
+    const thumbs = "https://melissaaudick.github.io/projects/product-project/img/product/thumbs/";
+    const pic = "https://melissaaudick.github.io/projects/product-project/img/product/";
 
 
 
@@ -17,22 +17,23 @@ $(function() {
 
     var searchable = [];
     var searchable2;
-
+    
+    //here we create an array of arrays, which pairs our ids with related searchable fields
+    //idk why i didn't just use an object
     _.each(product, function(value, key, object) {
       searchable2 = [];
       searchable2.push(value.id + value.type, value.color.concat(value.specs.join(' '), value.availableColors.join(' '), value.desc).toLowerCase(), value.price);
       searchable.push(searchable2);
 
     });
-    //here we create an array of arrays, which pairs our ids with related searchable fields
-    //idk why i didn't just use an object
+
 
     $('#container').append($('<div>').attr('id', 'search').attr('class', 'search')
 
       .append($('<form>').attr('id', 'searchform')
         .append($('<input>').attr('type', 'text').attr('id', 'searchterm'))
         .append($('<button>').text('Search!').attr('class', 'search-button').attr('id', 'submit')))
-
+        .click(function() { $('#product').show();})
 
       ////here comes the code for the sort by type/price
 
@@ -41,7 +42,8 @@ $(function() {
           .append($('<input>').attr('type', 'radio').attr('name', 'sort').attr('id', 'showcases').click(function() {
             if (showcases.checked) {
               _.each(caseFilter, function(element, index, collection) {
-                $("#" + element[0]).show()});
+                $("#" + element[0]).show();
+              });
               _.each(phoneFilter, function(element, index, collection) {
                 $("#" + element[0]).toggle();
               });
@@ -84,7 +86,9 @@ $(function() {
           }))
 
           .append($('<button>').text('Clear').attr('class', 'search-button').click(function() {
-            location.reload();
+            //location.reload();
+             $('#product').show();
+             console.log('ok');
           }))
         ))
 
@@ -109,25 +113,24 @@ $(function() {
     });
 
 
-    //vars for sort by price
+    //variables for sort by price
     var priceList = {};
     var priceTestHi = [];
     var priceTestLo = [];
 
-    //here comes sort by price
     //this creates priceList,  an object that contains only prices and product ids
     _.map(searchable, function(element, index, collection) {
       priceList[element[0]] = element[2];
     });
 
     function sortProperties(obj) {
-      // here we convert our priceList object into an array
+      // here we convert our priceList object into an array sorted by price
       var sortable = [];
       for (var key in obj)
         if (obj.hasOwnProperty(key))
-          sortable.push([key, obj[key]]); // in which each item is an array in format [key, value]
+          sortable.push([key, obj[key]]); // in which each item is an array in format [id, price]
 
-        // sort items by value
+        // this sorts items by value (aka price)
       sortable.sort(function(a, b) {
         return b[1] - a[1]; // we then compare the prices, arranging from high to low
       });
@@ -149,17 +152,18 @@ $(function() {
     ///this works now!!!! it's where search results come from
 
     var searchresult = [];
-
+    
     $('#searchform').submit(function() {
-
+     
       event.preventDefault();
       _.each(searchable, function(element, index, collection) {
 
         if ((element[1]).indexOf((searchterm.value).toLowerCase()) === -1) {
 
           searchresult.push(element[0]);
+        ///so that up there is pushing div ids for UNsuccessful search results into a new array
         }
-
+        
         //toggle result div, set searchterm display var to searchterm.value
        
         if (searchresult.length === 11) {
@@ -169,7 +173,7 @@ $(function() {
         $('#searchresultdiv').text('Displaying search results for "' + searchterm.value + '"').css("visibility", "visible");
         }
       });
-      ///so that up there is pushing div ids for UNsuccessful search results into a new array
+      
 
       ///and this will toggle all div ids WITHOUT the search terms from view
       _.each(searchresult, function(element, index, collection) {
